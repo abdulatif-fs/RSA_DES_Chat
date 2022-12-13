@@ -41,6 +41,6 @@ def enkrip(messege, publicKey, n):
 
 def dekrip(data, privateKey, n):
     # print("enkrip = ", enkrip)
-    data = (enkrip**privateKey['keyPr']) % n
-    return data
+    d = (data**privateKey) % n
+    return d
     # print("dekrip = ",dekrip)

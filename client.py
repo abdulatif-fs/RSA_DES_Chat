@@ -33,11 +33,15 @@ def receive():
                     n = pesan['key']['n']
                     key = (int(kuncides)**int(kunci))%int(n)
                     print(key)
-                    r = {'r':'inikuncides', 'nick':nickname, 'key':key}
+                    r = {'r':'inikuncides', 'nick':nickname, 'key':key, 'n':n}
                     client.send(pick.pack(r))
                 elif pesan['r'] == 'inikuncides':
-                    kuncides = pesan['key']
-                    print(pesan['nick'],':' ,kuncides)
+                    kuncide = pesan['key']
+                    n = pesan['n']
+                    
+                    print(pesan['nick'],':' ,kuncide)
+                    hasildekrip = rsa.dekrip(int(kuncide), privateK['keyPr'], n)
+                    print(pesan['nick'],':', hasildekrip)
                 else:
                     print(pesan['nick'],':' ,pesan['r'])
                 
